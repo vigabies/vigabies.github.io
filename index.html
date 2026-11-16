@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gabriela Silva · Desenvolvedora back end</title>
+<meta name="description" content="Portfólio de Gabriela Silva, estudante de Ciências da Computação com foco em back end (.NET, C#).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7fb; --surface:#f2edf6; --ink:#2e2a3b; --muted:#675f7a; --line:#e1d9ea;
+  --accent:#a24f73; --accent-soft:#ecd6e2; --focus:#7d4bb0;
+  --term:#2a2336; --term-ink:#e9e2f3; --term-key:#f0b6cf; --term-str:#b9e0cc; --term-mute:#9a90b0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1a1723; --surface:#252032; --ink:#efe9f5; --muted:#b2aac4; --line:#393348;
+    --accent:#e6a5c1; --accent-soft:#3b2b37; --focus:#c9a6f0; --term:#120f1a; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1a1723; --surface:#252032; --ink:#efe9f5; --muted:#b2aac4; --line:#393348;
+  --accent:#e6a5c1; --accent-soft:#3b2b37; --focus:#c9a6f0; --term:#120f1a; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:1.0625rem;line-height:1.65}
+main{max-width:56rem;margin:0 auto;padding:3.5rem 1.5rem 3rem}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-weight:500;line-height:1.1;margin:0}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:6px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr;gap:2.5rem;padding-bottom:3.5rem;border-bottom:1px solid var(--line)}
+@media (min-width:52rem){.hero{grid-template-columns:1fr 1.1fr;align-items:center}}
+.hero h1{font-size:clamp(3.2rem,9vw,5.2rem);font-weight:400;letter-spacing:-0.01em}
+.role{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:clamp(1.4rem,3.6vw,1.8rem);color:var(--accent);margin:.6rem 0 1.25rem}
+.hero p{margin:0 0 1.5rem;color:var(--muted);max-width:30rem}
+.btns{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn{display:inline-block;padding:.6rem 1.25rem;border-radius:999px;border:1px solid var(--accent);color:var(--accent);background:transparent;text-decoration:none;font:500 .98rem "DM Sans",system-ui,sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--accent);color:var(--bg)}
+.btn.solid{background:var(--accent);color:var(--bg)}
+.btn.solid:hover{background:transparent;color:var(--accent)}
+
+/* Console */
+.console{background:var(--term);color:var(--term-ink);border-radius:16px;overflow:hidden;box-shadow:0 18px 40px -22px rgba(60,30,90,.55)}
+.console-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem 1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.dot{width:.65rem;height:.65rem;border-radius:50%;background:#5d5272}
+.console-title{margin-left:.5rem;font-size:.85rem;color:var(--term-mute)}
+.routes{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 1rem .25rem}
+.route{font:500 .88rem ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--term-ink);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:.35rem .7rem;cursor:pointer;transition:background .2s}
+.route:hover{background:rgba(255,255,255,.12)}
+.route[aria-pressed="true"]{background:var(--term-key);color:#2a2336;border-color:var(--term-key)}
+.status{padding:.5rem 1rem 0;font:.85rem ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--term-mute)}
+.status b{color:var(--term-str);font-weight:500}
+.out{margin:0;padding:.6rem 1rem 1.2rem;min-height:15.5rem;font:.88rem/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.out .k{color:var(--term-key)} .out .s{color:var(--term-str)}
+.caret{display:inline-block;width:.5ch;background:var(--term-ink);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Sections */
+section{padding:3.5rem 0 0}
+h2{font-size:2.2rem;margin-bottom:1.25rem}
+.about p{max-width:38rem;margin:0 0 1rem}
+
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.5rem}
+.chip{font:500 .92rem "DM Sans",system-ui,sans-serif;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.35rem 1rem;cursor:pointer;transition:background .2s,border-color .2s}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16.5rem,1fr));gap:1.25rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:0;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.card[hidden]{display:none}
+.card summary{list-style:none;cursor:pointer;padding:1.4rem 1.4rem 1.1rem}
+.card summary::-webkit-details-marker{display:none}
+.card h3{font-size:1.7rem;margin-bottom:.4rem}
+.card .lead{margin:0 0 .9rem;color:var(--muted);font-size:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+.tags li{background:var(--accent-soft);font-size:.82rem;padding:.12rem .65rem;border-radius:999px}
+.more{padding:0 1.4rem 1.4rem;font-size:.98rem}
+.more ul{margin:.2rem 0 1rem;padding-left:1.2rem}
+.more li{margin:.25rem 0}
+.hint{display:block;margin-top:.9rem;font-size:.88rem;color:var(--accent)}
+.card[open] .hint::after{content:"Mostrar menos"} .card:not([open]) .hint::after{content:"Ver detalhes"}
+
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.25rem 2rem}
+.stack h3{font-size:1.35rem;margin-bottom:.3rem}
+.stack p{margin:0;color:var(--muted)}
+
+.contact p{max-width:34rem}
+.contact .btns{margin-top:1.25rem}
+footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.caret{animation:none}.card,.card:hover{transition:none;transform:none}}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div>
+      <h1>Gabriela Silva</h1>
+      <p class="role">Desenvolvedora back end em formação</p>
+      <p>Estudante de Ciências da Computação na Unisagrado, em Bauru. Construo APIs organizadas, com regras de negócio claras e testes, e sei trabalhar no front-end quando o projeto precisa.</p>
+      <div class="btns">
+        <a class="btn solid" href="#projetos">Ver projetos</a>
+        <a class="btn" href="https://github.com/vigabies" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/vigabies/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="console" role="group" aria-label="Console interativo: escolha uma rota para ver a resposta">
+      <div class="console-bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="console-title">Teste minha API</span></div>
+      <div class="routes">
+        <button class="route" type="button" data-route="sobre" aria-pressed="true">GET /sobre</button>
+        <button class="route" type="button" data-route="projetos" aria-pressed="false">GET /projetos</button>
+        <button class="route" type="button" data-route="stack" aria-pressed="false">GET /stack</button>
+        <button class="route" type="button" data-route="contato" aria-pressed="false">GET /contato</button>
+      </div>
+      <div class="status" id="status" aria-live="polite"></div>
+      <pre class="out" id="out" aria-live="off"></pre>
+    </div>
+  </header>
+
+  <section class="about" id="sobre">
+    <h2>Sobre mim</h2>
+    <p>Curso Ciências da Computação na modalidade EAD e estudo por conta própria para aprofundar o que vejo em aula. Meu foco atual é back end com C# e .NET, onde pratico arquitetura em camadas, validações, testes unitários e persistência de dados.</p>
+  </section>
+
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <div class="chips" role="group" aria-label="Filtrar projetos">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">Todos</button>
+      <button class="chip" type="button" data-filter="back" aria-pressed="false">Back end</button>
+      <button class="chip" type="button" data-filter="front" aria-pressed="false">Front end</button>
+    </div>
+
+    <div class="grid">
+      <details class="card" data-type="back">
+        <summary>
+          <h3>CashFlow</h3>
+          <p class="lead">API para controlar despesas pessoais e gerar relatórios.</p>
+          <ul class="tags"><li>C#</li><li>.NET</li><li>DDD</li><li>MySQL</li></ul>
+          <span class="hint"></span>
+        </summary>
+        <div class="more">
+          <ul>
+            <li>Arquitetura baseada em DDD</li>
+            <li>Testes unitários</li>
+            <li>Relatórios em PDF e Excel</li>
+            <li>Dados armazenados em MySQL</li>
+          </ul>
+          <a href="https://github.com/vigabies/CashFlow" target="_blank" rel="noopener">Ver código no GitHub</a>
+        </div>
+      </details>
+
+      <details class="card" data-type="back">
+        <summary>
+          <h3>GerenciadorDeTarefas</h3>
+          <p class="lead">API para criar e acompanhar tarefas, com validações.</p>
+          <ul class="tags"><li>C#</li><li>.NET</li><li>API REST</li></ul>
+          <span class="hint"></span>
+        </summary>
+        <div class="more">
+          <ul>
+            <li>Organizada em Controllers, Requests, Models, Enums e Use Cases</li>
+            <li>CRUD completo</li>
+            <li>Validações nas entradas</li>
+          </ul>
+          <a href="https://github.com/vigabies/GerenciadorDeTarefas" target="_blank" rel="noopener">Ver código no GitHub</a>
+        </div>
+      </details>
+
+      <details class="card" data-type="front">
+        <summary>
+          <h3>Gringoss Flow IDE</h3>
+          <p class="lead">Ferramenta web para configurar as regras de agendamento de uma barbearia.</p>
+          <ul class="tags"><li>React</li><li>JavaScript</li><li>Projeto extensionista</li></ul>
+          <span class="hint"></span>
+        </summary>
+        <div class="more">
+          <ul>
+            <li>Projeto extensionista da Unisagrado, para a Barbearia Gringoss</li>
+            <li>Interface web feita em React</li>
+            <li>Desenvolvido em dupla</li>
+          </ul>
+          <a href="https://github.com/vigabies/gringoss-flow-ide" target="_blank" rel="noopener">Ver código no GitHub</a>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="tecnologias">
+    <h2>Tecnologias</h2>
+    <div class="stack">
+      <div><h3>Estudando agora</h3><p>C#, .NET e Python</p></div>
+      <div><h3>Já utilizo</h3><p>Java, JavaScript e React</p></div>
+      <div><h3>Práticas</h3><p>DDD, testes unitários, MySQL, Git e GitHub</p></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <h2>Vamos conversar?</h2>
+    <p>Se você tem uma vaga ou quer trocar ideias sobre algum projeto, me escreva. Vou gostar de responder.</p>
+    <div class="btns">
+      <a class="btn solid" href="mailto:vigabiesdivision@gmail.com">Enviar e-mail</a>
+      <button class="btn" type="button" id="copy">Copiar e-mail</button>
+      <a class="btn" href="https://www.linkedin.com/in/vigabies/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Gabriela Silva</footer>
+</main>
+
+<script>
+(function(){
+  var DATA = {
+    sobre: {
+      nome: "Gabriela Silva",
+      curso: "Ciências da Computação (EAD)",
+      instituicao: "Unisagrado, Bauru",
+      foco: "Desenvolvimento back end"
+    },
+    projetos: [
+      { nome: "CashFlow", tipo: "API .NET", destaque: "DDD, testes e relatórios PDF/Excel" },
+      { nome: "GerenciadorDeTarefas", tipo: "API .NET", destaque: "CRUD e validações" },
+      { nome: "Gringoss Flow IDE", tipo: "Web com React", destaque: "Regras de agendamento" }
+    ],
+    stack: {
+      estudando: ["C#", ".NET", "Python"],
+      utilizo: ["Java", "JavaScript", "React"],
+      praticas: ["DDD", "Testes unitários", "MySQL", "Git"]
+    },
+    contato: {
+      email: "vigabiesdivision@gmail.com",
+      linkedin: "linkedin.com/in/vigabies",
+      github: "github.com/vigabies"
+    }
+  };
+
+  var out = document.getElementById("out");
+  var status = document.getElementById("status");
+  var buttons = document.querySelectorAll(".route");
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var timer = null;
+
+  function esc(t){ return t.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+  function color(json){
+    return esc(json)
+      .replace(/("[^"]*")(\s*:)/g, '<span class="k">$1</span>$2')
+      .replace(/:\s("[^"]*")/g, function(m, s){ return ': <span class="s">' + s + '</span>'; })
+      .replace(/^(\s+)("[^"]*"),?$/gm, function(m){ return m.replace(/("[^"]*")/, '<span class="s">$1</span>'); });
+  }
+
+  function show(route){
+    clearTimeout(timer);
+    buttons.forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.route === route)); });
+    var text = JSON.stringify(DATA[route], null, 2);
+    status.innerHTML = 'GET /' + route + ' → <b>200 OK</b>';
+    if (reduce){ out.innerHTML = color(text); return; }
+    out.setAttribute("aria-busy", "true");
+    var i = 0;
+    (function tick(){
+      i = Math.min(text.length, i + 4);
+      out.innerHTML = color(text.slice(0, i)) + (i < text.length ? '<span class="caret">&nbsp;</span>' : "");
+      if (i < text.length){ timer = setTimeout(tick, 14); } else { out.removeAttribute("aria-busy"); }
+    })();
+  }
+  buttons.forEach(function(b){ b.addEventListener("click", function(){ show(b.dataset.route); }); });
+  show("sobre");
+
+  // Filtro de projetos
+  var chips = document.querySelectorAll(".chip");
+  var cards = document.querySelectorAll(".card");
+  chips.forEach(function(c){
+    c.addEventListener("click", function(){
+      chips.forEach(function(x){ x.setAttribute("aria-pressed", String(x === c)); });
+      cards.forEach(function(card){ card.hidden = !(c.dataset.filter === "all" || card.dataset.type === c.dataset.filter); });
+    });
+  });
+
+  // Copiar e-mail
+  var copy = document.getElementById("copy");
+  copy.addEventListener("click", function(){
+    var mail = "vigabiesdivision@gmail.com";
+    function done(msg){ copy.textContent = msg; setTimeout(function(){ copy.textContent = "Copiar e-mail"; }, 2000); }
+    try {
+      navigator.clipboard.writeText(mail).then(function(){ done("Copiado!"); }, function(){ done(mail); });
+    } catch (e) { done(mail); }
+  });
+})();
+</script>
+</body>
+</html>
